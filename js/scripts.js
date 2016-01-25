@@ -5,7 +5,7 @@ function ToDo (task, note){
 
 function resetFields() {
   $("input#new-task").val("");
-  $("input#new-note").val("");
+  $("textarea#new-note").val("");
 }
 
 $(document).ready(function(){
@@ -13,22 +13,16 @@ $(document).ready(function(){
     event.preventDefault();
 
     var task = $("input#new-task").val();
-    var note = $("input#new-note").val();
+    var note = $("textarea#new-note").val();
     var newToDo = new ToDo(task, note);
 
-    $("ul#finaltask").append("<li><span class='output'>" + newToDo.task + "</span></li>");
+    $("ul#finaltask").append("<li><h3>" + newToDo.task + "</h3><p>" + newToDo.note + "</p></li>");
 
     resetFields();
 
-    $("#delete").last().click(function(){
-      $("#show-list").hide();
-
-    });
-
-    $(".output").last().click(function() {
-      $("#show-list").show();
-      $("#show-list h2").text(newToDo.task);
-      $(".notes").text(newToDo.note);
+    $("ul#finaltask li").last().click(function() {
+      $(this).toggleClass("strikethru");
+      return false;
     });
   });
 });

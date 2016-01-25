@@ -1,3 +1,6 @@
 #show-list {
   display: none;
 }
+.strikethru {
+   text-decoration: line-through;
+}
